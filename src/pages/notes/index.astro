@@ -5,30 +5,21 @@ import { getCollection } from 'astro:content';
 const notes = (await getCollection('notes'))
   .filter((note) => !note.data.draft)
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
-
-const pillars = ['software', 'photography', 'games', 'personal'];
 ---
 
 <BaseLayout
   title="Notes · Lincon Vidal"
-  description="Essays, devlogs, field notes, and public fragments by Lincon Vidal."
+  description="Notes by Lincon Vidal."
 >
   <section class="page-hero compact-hero">
-    <p class="eyebrow">notes / essays</p>
-    <h1>Notes, essays, and devlogs.</h1>
+    <p class="eyebrow">notes</p>
+    <h1>Notes.</h1>
     <p class="lede">
-      Occasional writing about software, photography, games, and whatever keeps coming back.
+      Things I want to leave somewhere more stable than a chat or a timeline.
     </p>
   </section>
 
-  <section class="section notes-index">
-    <aside class="notes-aside">
-      <p class="eyebrow">areas</p>
-      <div class="tag-list" aria-label="Note areas">
-        {pillars.map((pillar) => <span>{pillar}</span>)}
-      </div>
-    </aside>
-
+  <section class="section notes-index simple-notes-index">
     <div class="note-list expanded-list">
       {notes.map((note) => (
         <a class="note-row expanded-row" href={`/notes/${note.id}`}>

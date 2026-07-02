@@ -2,14 +2,14 @@
 
 Static personal site for `linconvidal.com`.
 
-A personal home for software, photography, games, and notes. Built with Astro and deployed as static files so hosting can stay simple and cheap.
+A small personal site for photographs, software, games, and notes. Built with Astro and deployed as static files so hosting can stay simple and cheap.
 
 ## Sections
 
-- `/photography`: photo essays, zines, selected prints, and photographs.
-- `/software`: Cobogó, Farol, SpatialMD, tools, and infrastructure work.
-- `/games`: Pinote, prototypes, and devlogs.
-- `/notes`: essays, field notes, devlogs, and blog-like writing.
+- `/photography`: photographs and edits.
+- `/software`: Cobogó, Farol, and SpatialMD.
+- `/games`: mostly Pinote for now.
+- `/notes`: writing worth keeping around.
 
 ## Commands
 

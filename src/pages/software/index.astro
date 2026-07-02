@@ -4,15 +4,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const projects = [
   {
     title: 'Cobogó',
-    description: 'A spatial markdown thing. It started as a renderer and got a little out of hand.',
+    description: 'Spatial markdown. It started as a renderer, then the files stopped feeling like a list.',
   },
   {
     title: 'Farol',
-    description: 'A Cardano wallet I’m making because I wanted something quieter.',
+    description: 'A Cardano wallet that tries to stay quiet until something actually needs attention.',
   },
   {
     title: 'SpatialMD',
-    description: 'A way to write diagrams and visual notes without opening a design tool.',
+    description: 'Markdown blocks for diagrams, comparisons, and visual explanations.',
   },
 ];
 
@@ -24,17 +24,13 @@ const projects = [
 >
   <section class="page-hero compact-hero">
     <p class="eyebrow">software</p>
-    <h1>Software I keep around.</h1>
+    <h1>Cobogó, Farol, SpatialMD.</h1>
     <p class="lede">
-      Some of it is public. Some of it is just how I organize my own work.
+      Three software projects I keep returning to.
     </p>
   </section>
 
-  <section class="section split-section">
-    <div>
-      <p class="eyebrow">things</p>
-      <h2>A few things.</h2>
-    </div>
+  <section class="section">
     <div class="card-grid three-column">
       {projects.map((project) => (
         <article class="feature-card quiet-card">
