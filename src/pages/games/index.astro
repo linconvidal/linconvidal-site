@@ -19,11 +19,6 @@ const gameWork = [
   },
 ];
 
-const questions = [
-  'Can I understand the crash?',
-  'Does it feel good before it has content?',
-  'Can the screen explain itself without stopping the game?',
-];
 ---
 
 <BaseLayout
@@ -54,13 +49,4 @@ const questions = [
     </div>
   </section>
 
-  <section class="section split-section">
-    <div>
-      <p class="eyebrow">questions</p>
-      <h2>The checks are simple.</h2>
-    </div>
-    <ol class="rule-list">
-      {questions.map((question) => <li>{question}</li>)}
-    </ol>
-  </section>
 </BaseLayout>

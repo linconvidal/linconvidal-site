@@ -24,11 +24,6 @@ const projects = [
   },
 ];
 
-const notes = [
-  'Make the state visible.',
-  'Keep names close to what people are trying to do.',
-  'Do not turn implementation details into product language.',
-];
 ---
 
 <BaseLayout
@@ -59,13 +54,4 @@ const notes = [
     </div>
   </section>
 
-  <section class="section split-section">
-    <div>
-      <p class="eyebrow">notes</p>
-      <h2>Things I keep checking.</h2>
-    </div>
-    <ol class="rule-list">
-      {notes.map((note) => <li>{note}</li>)}
-    </ol>
-  </section>
 </BaseLayout>
