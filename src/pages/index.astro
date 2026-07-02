@@ -9,54 +9,40 @@ const notes = (await getCollection('notes'))
 ---
 
 <BaseLayout>
-  <section class="photo-hero">
-    <figure class="hero-photograph">
+  <section class="front-hero">
+    <div class="front-intro">
+      <p class="eyebrow">linconvidal.com</p>
+      <h1>Software, photography, games, notes.</h1>
+      <p class="lede">Things I build, photograph, play with, and write.</p>
+    </div>
+
+    <div class="front-list" aria-label="Main sections">
+      <a class="front-link" href="/software">
+        <span class="front-number">01</span>
+        <strong>Software</strong>
+        <span>Cobogó, Farol, SpatialMD, tools.</span>
+      </a>
+      <a class="front-link" href="/photography">
+        <span class="front-number">02</span>
+        <strong>Photography</strong>
+        <span>Essays, zines, selected prints.</span>
+      </a>
+      <a class="front-link" href="/games">
+        <span class="front-number">03</span>
+        <strong>Games</strong>
+        <span>Pinote, prototypes, devlogs.</span>
+      </a>
+      <a class="front-link" href="/notes">
+        <span class="front-number">04</span>
+        <strong>Notes</strong>
+        <span>Essays, field notes, fragments.</span>
+      </a>
+    </div>
+
+    <figure class="front-photo">
       <img src="/photographs/paraty-street.jpg" alt="Street in Paraty photographed by Lincon Vidal" />
       <figcaption>Paraty, 2025</figcaption>
     </figure>
-
-    <div class="hero-statement">
-      <p class="eyebrow">linconvidal.com</p>
-      <h1>Code, photography, games, notes.</h1>
-      <p class="lede">Software tools, photographs, game projects, and writing from the same practice.</p>
-      <div class="pill-row" aria-label="Site themes">
-        <span class="pill">Cobogó</span>
-        <span class="pill">Pinote</span>
-        <span class="pill">prints</span>
-        <span class="pill">essays</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="path-grid" aria-label="Site sections">
-    <a class="path-card path-card--photography" href="/photography">
-      <span class="number">01</span>
-      <div>
-        <h3>Photography</h3>
-        <p>Photo essays, zines, and selected prints.</p>
-      </div>
-    </a>
-    <a class="path-card path-card--software" href="/software">
-      <span class="number">02</span>
-      <div>
-        <h3>Software</h3>
-        <p>Cobogó, Farol, SpatialMD, Cardano tooling, and focused experiments.</p>
-      </div>
-    </a>
-    <a class="path-card path-card--games" href="/games">
-      <span class="number">03</span>
-      <div>
-        <h3>Games</h3>
-        <p>Pinote, Cotinga Games, motorcycles, systems, prototypes, and devlogs.</p>
-      </div>
-    </a>
-    <a class="path-card path-card--notes" href="/notes">
-      <span class="number">04</span>
-      <div>
-        <h3>Notes</h3>
-        <p>Essays, devlogs, field notes, and public fragments.</p>
-      </div>
-    </a>
   </section>
 
   <section class="section notes-section">
