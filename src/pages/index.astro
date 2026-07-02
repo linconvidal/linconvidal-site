@@ -9,13 +9,16 @@ const notes = (await getCollection('notes'))
 ---
 
 <BaseLayout>
-  <section class="home-hero">
-    <div class="hero-copy">
-      <p class="eyebrow">linconvidal.com · selected work</p>
-      <h1>Code, photographs, games, notes.</h1>
-      <p class="lede">
-        Software tools, visual work, game projects, and writing from the same practice.
-      </p>
+  <section class="photo-hero">
+    <figure class="hero-photograph">
+      <img src="/photographs/paraty-street.jpg" alt="Street in Paraty photographed by Lincon Vidal" />
+      <figcaption>Paraty, 2025</figcaption>
+    </figure>
+
+    <div class="hero-statement">
+      <p class="eyebrow">linconvidal.com</p>
+      <h1>Code, photography, games, notes.</h1>
+      <p class="lede">Software tools, photographs, game projects, and writing from the same practice.</p>
       <div class="pill-row" aria-label="Site themes">
         <span class="pill">Cobogó</span>
         <span class="pill">Pinote</span>
@@ -23,28 +26,13 @@ const notes = (await getCollection('notes'))
         <span class="pill">essays</span>
       </div>
     </div>
-
-    <aside class="studio-index" aria-label="Work index card">
-      <div class="index-topline">
-        <span>LV / 0001</span>
-        <span>index</span>
-      </div>
-      <div class="index-mark">LV</div>
-      <dl class="index-list">
-        <div><dt>code</dt><dd>software tools</dd></div>
-        <div><dt>photo</dt><dd>photography</dd></div>
-        <div><dt>game</dt><dd>Pinote</dd></div>
-        <div><dt>note</dt><dd>essays</dd></div>
-      </dl>
-      <p class="stamp">selected work</p>
-    </aside>
   </section>
 
   <section class="path-grid" aria-label="Site sections">
-    <a class="path-card path-card--visuals" href="/visuals">
+    <a class="path-card path-card--photography" href="/photography">
       <span class="number">01</span>
       <div>
-        <h3>Visuals</h3>
+        <h3>Photography</h3>
         <p>Photo essays, zines, and selected prints.</p>
       </div>
     </a>

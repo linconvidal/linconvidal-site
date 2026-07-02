@@ -9,7 +9,7 @@ const notes = defineCollection({
     description: z.string().optional(),
     publishedAt: z.date(),
     tags: z.array(z.string()).default([]),
-    pillar: z.enum(['visuals', 'software', 'games', 'personal']).optional(),
+    pillar: z.enum(['photography', 'software', 'games', 'personal']).optional(),
     draft: z.boolean().default(false),
   }),
 });
