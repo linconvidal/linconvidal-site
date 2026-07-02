@@ -9,52 +9,74 @@ const notes = (await getCollection('notes'))
 ---
 
 <BaseLayout>
-  <section class="hero">
-    <div>
-      <p class="eyebrow">personal site · static studio</p>
-      <h1>Software, cities, images, games.</h1>
-    </div>
-    <div>
+  <section class="home-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">linconvidal.com · static studio</p>
+      <h1>Code, images, games, notes.</h1>
       <p class="lede">
-        A public home for the things I build and notice: Cardano tooling, small games,
-        urban observations, visual essays, and notes that do not fit a social feed.
+        A personal site for things made with attention: software projects, visual work,
+        small games, and essays that need more room than a feed gives them.
       </p>
       <div class="pill-row" aria-label="Site themes">
         <span class="pill">Cobogó</span>
         <span class="pill">Pinote</span>
-        <span class="pill">photography</span>
-        <span class="pill">urban form</span>
+        <span class="pill">prints</span>
+        <span class="pill">devlogs</span>
       </div>
     </div>
+
+    <aside class="studio-index" aria-label="Site index card">
+      <div class="index-topline">
+        <span>LV / 0001</span>
+        <span>static</span>
+      </div>
+      <div class="index-mark">LV</div>
+      <dl class="index-list">
+        <div><dt>build</dt><dd>software tools</dd></div>
+        <div><dt>see</dt><dd>photo essays</dd></div>
+        <div><dt>play</dt><dd>Pinote</dd></div>
+        <div><dt>write</dt><dd>notes / essays</dd></div>
+      </dl>
+      <p class="stamp">not a feed</p>
+    </aside>
   </section>
 
-  <section class="card-grid" aria-label="Site sections">
-    <a class="card" href="/visuals">
+  <section class="path-grid" aria-label="Site sections">
+    <a class="path-card path-card--visuals" href="/visuals">
       <span class="number">01</span>
       <div>
         <h3>Visuals</h3>
         <p>Photo essays, zines, and future print editions. Not a stock gallery.</p>
       </div>
     </a>
-    <a class="card" href="/software">
+    <a class="path-card path-card--software" href="/software">
       <span class="number">02</span>
       <div>
         <h3>Software</h3>
-        <p>Tools, experiments, architecture notes, and things built for real use.</p>
+        <p>Cobogó, Farol, SpatialMD, Cardano tooling, and experiments that became useful.</p>
       </div>
     </a>
-    <a class="card" href="/games">
+    <a class="path-card path-card--games" href="/games">
       <span class="number">03</span>
       <div>
         <h3>Games</h3>
-        <p>Pinote, Cotinga Games, procedural cities, motorcycles, and devlogs.</p>
+        <p>Pinote, Cotinga Games, motorcycles, systems, prototypes, and devlogs.</p>
+      </div>
+    </a>
+    <a class="path-card path-card--notes" href="/notes">
+      <span class="number">04</span>
+      <div>
+        <h3>Notes</h3>
+        <p>Essays, public drafts, release notes, and the writing that keeps projects alive.</p>
       </div>
     </a>
   </section>
 
-  <section class="section">
-    <p class="eyebrow">latest notes</p>
-    <h2>Notes / essays</h2>
+  <section class="section notes-section">
+    <div>
+      <p class="eyebrow">notes / essays</p>
+      <h2>Recent writing</h2>
+    </div>
     <div class="note-list">
       {notes.map((note) => (
         <a class="note-row" href={`/notes/${note.id}`}>

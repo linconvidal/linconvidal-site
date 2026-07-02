@@ -7,4 +7,4 @@ pillar: personal
 draft: false
 ---
 
-This site is not a niche portfolio. It is a studio: software, cities, images, games, notes, and the occasional print edition sharing the same address.
+This site is not a niche portfolio. It is a studio: software, images, games, notes, and the occasional print edition sharing the same address.

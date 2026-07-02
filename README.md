@@ -2,7 +2,7 @@
 
 Static personal site for `linconvidal.com`.
 
-Direction: a personal home for software, cities, visual work, games, and notes/essays. Built as a static Astro site to avoid recurring hosting costs.
+Direction: a personal home for software, visual work, games, and notes/essays. Built as a static Astro site to avoid recurring hosting costs.
 
 ## First pillars
 
