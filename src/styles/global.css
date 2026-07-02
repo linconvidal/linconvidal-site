@@ -173,10 +173,30 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
 }
 
 .front-photo figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   margin-top: 10px;
   color: #667085;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.82rem;
+}
+
+.front-photo button {
+  appearance: none;
+  border: 1px solid #c8ccd3;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: transparent;
+  color: #2f3745;
+  cursor: pointer;
+  font: inherit;
+}
+
+.front-photo button:hover {
+  border-color: #2f3745;
+  color: #171717;
 }
 
 .section {

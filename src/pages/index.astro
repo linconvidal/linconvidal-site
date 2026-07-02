@@ -6,12 +6,44 @@ const notes = (await getCollection('notes'))
   .filter((note) => !note.data.draft)
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
   .slice(0, 3);
+
+const homePhotographs = [
+  {
+    src: '/photographs/home/paraty-street.jpg',
+    alt: 'Street in Paraty photographed by Lincon Vidal',
+    caption: 'Paraty, 2025',
+  },
+  {
+    src: '/photographs/home/paraty-canal.jpg',
+    alt: 'Canal in Paraty photographed by Lincon Vidal',
+    caption: 'Paraty, 2025',
+  },
+  {
+    src: '/photographs/home/yellow-door.jpg',
+    alt: 'Yellow doorway in Paraty photographed by Lincon Vidal',
+    caption: 'Paraty, 2025',
+  },
+  {
+    src: '/photographs/home/boats.jpg',
+    alt: 'Boats on the water photographed by Lincon Vidal',
+    caption: 'Paraty, 2025',
+  },
+  {
+    src: '/photographs/home/water-texture.jpg',
+    alt: 'Water texture photographed by Lincon Vidal',
+    caption: 'Paraty, 2025',
+  },
+  {
+    src: '/photographs/home/mountain.jpg',
+    alt: 'Mountain near Paraty photographed by Lincon Vidal',
+    caption: 'Paraty, 2025',
+  },
+];
 ---
 
 <BaseLayout>
   <section class="front-hero">
     <div class="front-intro">
-      <p class="eyebrow">linconvidal.com</p>
       <h1>Software, photography, games, notes.</h1>
       <p class="lede">Things I build, photograph, play with, and write.</p>
     </div>
@@ -39,9 +71,16 @@ const notes = (await getCollection('notes'))
       </a>
     </div>
 
-    <figure class="front-photo">
-      <img src="/photographs/paraty-street.jpg" alt="Street in Paraty photographed by Lincon Vidal" />
-      <figcaption>Paraty, 2025</figcaption>
+    <figure class="front-photo" data-photo-rotator>
+      <img
+        data-photo-image
+        src={homePhotographs[0].src}
+        alt={homePhotographs[0].alt}
+      />
+      <figcaption>
+        <span data-photo-caption>{homePhotographs[0].caption}</span>
+        <button type="button" data-next-photo>another photograph</button>
+      </figcaption>
     </figure>
   </section>
 
@@ -59,4 +98,29 @@ const notes = (await getCollection('notes'))
       ))}
     </div>
   </section>
+
+  <script is:inline type="application/json" id="home-photographs" set:html={JSON.stringify(homePhotographs)} />
+  <script is:inline>
+    const data = document.getElementById('home-photographs')?.textContent ?? '[]';
+    const photographs = JSON.parse(data);
+    const root = document.querySelector('[data-photo-rotator]');
+    const image = root?.querySelector('[data-photo-image]');
+    const caption = root?.querySelector('[data-photo-caption]');
+    const button = root?.querySelector('[data-next-photo]');
+
+    let index = 0;
+
+    button?.addEventListener('click', () => {
+      if (!image || !caption || photographs.length < 2) return;
+
+      let next = Math.floor(Math.random() * photographs.length);
+      if (next === index) next = (next + 1) % photographs.length;
+      index = next;
+
+      const photograph = photographs[index];
+      image.src = photograph.src;
+      image.alt = photograph.alt;
+      caption.textContent = photograph.caption;
+    });
+  </script>
 </BaseLayout>
