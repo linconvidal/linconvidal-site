@@ -1,10 +1,10 @@
 ---
 title: First room
-description: A small opening note.
+description: A first note for the new site.
 publishedAt: 2026-07-02
 tags: [studio]
 pillar: personal
 draft: false
 ---
 
-A small room for work that moves between code, photography, games, and writing.
+This is the first note in the new site. A small place for software, photography, games, and the things that do not fit neatly in one section.

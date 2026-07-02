@@ -4,30 +4,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const projects = [
   {
     title: 'Cobogó',
-    description: 'A place for spatial documents, visual explanations, and public thinking that does not fit a linear blog.',
-    meta: 'product / publishing',
+    description: 'Spatial documents and visual notes. It started as a markdown renderer and got a little out of hand.',
+    meta: 'product',
   },
   {
     title: 'Farol Wallet',
-    description: 'A Cardano wallet shaped around clarity, safer signing, and a quieter desktop and mobile experience.',
-    meta: 'wallet / Cardano',
+    description: 'A Cardano wallet I am building for desktop and mobile.',
+    meta: 'wallet',
   },
   {
     title: 'SpatialMD',
-    description: 'A small language for arranging explanation on the page with grids, flows, panels, and comparisons.',
-    meta: 'tool / format',
+    description: 'Markdown with layout blocks for guides, comparisons, flows, and visual explanations.',
+    meta: 'format',
   },
   {
     title: 'Infrastructure work',
-    description: 'Cardano integrations, testing workflows, release notes, and the operational pieces that make software shippable.',
-    meta: 'systems / delivery',
+    description: 'Cardano integrations, release notes, test plans, and the glue work around shipping.',
+    meta: 'systems',
   },
 ];
 
-const principles = [
-  'Software should explain itself before asking for trust.',
-  'A tool is better when it removes a recurring decision.',
-  'Good interfaces hide implementation details without hiding consequences.',
+const notes = [
+  'Make the state visible.',
+  'Keep names close to what people are trying to do.',
+  'Do not turn implementation details into product language.',
 ];
 ---
 
@@ -37,16 +37,16 @@ const principles = [
 >
   <section class="page-hero compact-hero">
     <p class="eyebrow">software</p>
-    <h1>Tools and systems with a point of view.</h1>
+    <h1>Software I’m building and maintaining.</h1>
     <p class="lede">
-      Products, infrastructure, formats, and small utilities that start from real friction.
+      Wallets, publishing tools, docs, infrastructure, and small things that came out of my own work.
     </p>
   </section>
 
   <section class="section split-section">
     <div>
       <p class="eyebrow">current work</p>
-      <h2>Things I am building.</h2>
+      <h2>Current projects.</h2>
     </div>
     <div class="card-grid two-column">
       {projects.map((project) => (
@@ -61,11 +61,11 @@ const principles = [
 
   <section class="section split-section">
     <div>
-      <p class="eyebrow">working rules</p>
-      <h2>What keeps showing up.</h2>
+      <p class="eyebrow">notes</p>
+      <h2>Things I keep checking.</h2>
     </div>
     <ol class="rule-list">
-      {principles.map((principle) => <li>{principle}</li>)}
+      {notes.map((note) => <li>{note}</li>)}
     </ol>
   </section>
 </BaseLayout>

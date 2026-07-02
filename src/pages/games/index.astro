@@ -4,25 +4,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const gameWork = [
   {
     title: 'Pinote',
-    description: 'A small, kinetic game about timing, pressure, and readable movement.',
+    description: 'A small bike game about timing, weight, and bad landings.',
     meta: 'active',
   },
   {
     title: 'Prototypes',
-    description: 'Mechanic sketches that test a single verb before becoming a larger thing.',
+    description: 'One-mechanic tests before anything becomes a bigger project.',
     meta: 'experiments',
   },
   {
     title: 'Devlogs',
-    description: 'Notes about feel, animation, input, difficulty, and the choices behind the game.',
+    description: 'Notes on feel, movement, difficulty, and what changed.',
     meta: 'writing',
   },
 ];
 
-const lenses = [
-  'Can the player read what happened?',
-  'Does the screen teach without pausing the game?',
-  'Is the moment fun before the system becomes large?',
+const questions = [
+  'Can I understand the crash?',
+  'Does it feel good before it has content?',
+  'Can the screen explain itself without stopping the game?',
 ];
 ---
 
@@ -32,16 +32,16 @@ const lenses = [
 >
   <section class="page-hero compact-hero games-hero">
     <p class="eyebrow">games</p>
-    <h1>Small games with pressure and readable motion.</h1>
+    <h1>Games I’m making. Mostly Pinote for now.</h1>
     <p class="lede">
-      Pinote, prototypes, devlogs, and game systems under Cotinga Games.
+      Pinote, small prototypes, and notes about game feel.
     </p>
   </section>
 
   <section class="section split-section">
     <div>
       <p class="eyebrow">workbench</p>
-      <h2>What is on the table.</h2>
+      <h2>Current game work.</h2>
     </div>
     <div class="card-grid three-column">
       {gameWork.map((item) => (
@@ -56,11 +56,11 @@ const lenses = [
 
   <section class="section split-section">
     <div>
-      <p class="eyebrow">design lens</p>
-      <h2>The questions I keep asking.</h2>
+      <p class="eyebrow">questions</p>
+      <h2>The checks are simple.</h2>
     </div>
     <ol class="rule-list">
-      {lenses.map((lens) => <li>{lens}</li>)}
+      {questions.map((question) => <li>{question}</li>)}
     </ol>
   </section>
 </BaseLayout>
