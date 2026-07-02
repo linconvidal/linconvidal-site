@@ -6,9 +6,9 @@ Direction: a personal home for software, visual work, games, and notes/essays. B
 
 ## First pillars
 
-- `/visuals` — photo essays, zines, and future print editions.
+- `/visuals` — photo essays, zines, and selected print work.
 - `/software` — Cobogó, Farol, SpatialMD, tools, research work.
-- `/games` — Pinote and Cotinga Games as the game label/project context.
+- `/games` — Pinote and Cotinga Games.
 - `/notes` — essays, field notes, devlogs, and blog-like writing.
 
 ## Commands

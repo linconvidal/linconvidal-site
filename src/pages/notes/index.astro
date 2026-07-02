@@ -10,7 +10,7 @@ const notes = (await getCollection('notes'))
 <BaseLayout title="Notes · Lincon Vidal">
   <p class="eyebrow">notes / essays</p>
   <h1>Notes that can breathe.</h1>
-  <p class="lede">A blog when it wants to be a blog. Field notes, devlogs, visual thinking, and public drafts.</p>
+  <p class="lede">Essays, devlogs, field notes, and public fragments.</p>
   <div class="note-list">
     {notes.map((note) => (
       <a class="note-row" href={`/notes/${note.id}`}>

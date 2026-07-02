@@ -11,33 +11,32 @@ const notes = (await getCollection('notes'))
 <BaseLayout>
   <section class="home-hero">
     <div class="hero-copy">
-      <p class="eyebrow">linconvidal.com · static studio</p>
+      <p class="eyebrow">linconvidal.com · selected work</p>
       <h1>Code, images, games, notes.</h1>
       <p class="lede">
-        A personal site for things made with attention: software projects, visual work,
-        small games, and essays that need more room than a feed gives them.
+        Software tools, visual work, game projects, and writing from the same practice.
       </p>
       <div class="pill-row" aria-label="Site themes">
         <span class="pill">Cobogó</span>
         <span class="pill">Pinote</span>
         <span class="pill">prints</span>
-        <span class="pill">devlogs</span>
+        <span class="pill">essays</span>
       </div>
     </div>
 
-    <aside class="studio-index" aria-label="Site index card">
+    <aside class="studio-index" aria-label="Work index card">
       <div class="index-topline">
         <span>LV / 0001</span>
-        <span>static</span>
+        <span>index</span>
       </div>
       <div class="index-mark">LV</div>
       <dl class="index-list">
-        <div><dt>build</dt><dd>software tools</dd></div>
-        <div><dt>see</dt><dd>photo essays</dd></div>
-        <div><dt>play</dt><dd>Pinote</dd></div>
-        <div><dt>write</dt><dd>notes / essays</dd></div>
+        <div><dt>code</dt><dd>software tools</dd></div>
+        <div><dt>image</dt><dd>visual work</dd></div>
+        <div><dt>game</dt><dd>Pinote</dd></div>
+        <div><dt>note</dt><dd>essays</dd></div>
       </dl>
-      <p class="stamp">not a feed</p>
+      <p class="stamp">selected work</p>
     </aside>
   </section>
 
@@ -46,14 +45,14 @@ const notes = (await getCollection('notes'))
       <span class="number">01</span>
       <div>
         <h3>Visuals</h3>
-        <p>Photo essays, zines, and future print editions. Not a stock gallery.</p>
+        <p>Photo essays, zines, and selected prints.</p>
       </div>
     </a>
     <a class="path-card path-card--software" href="/software">
       <span class="number">02</span>
       <div>
         <h3>Software</h3>
-        <p>Cobogó, Farol, SpatialMD, Cardano tooling, and experiments that became useful.</p>
+        <p>Cobogó, Farol, SpatialMD, Cardano tooling, and focused experiments.</p>
       </div>
     </a>
     <a class="path-card path-card--games" href="/games">
@@ -67,7 +66,7 @@ const notes = (await getCollection('notes'))
       <span class="number">04</span>
       <div>
         <h3>Notes</h3>
-        <p>Essays, public drafts, release notes, and the writing that keeps projects alive.</p>
+        <p>Essays, devlogs, field notes, and public fragments.</p>
       </div>
     </a>
   </section>
