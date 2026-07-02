@@ -1,48 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const gameWork = [
-  {
-    title: 'Pinote',
-    description: 'A small bike game about timing, weight, and bad landings.',
-  },
-  {
-    title: 'Prototypes',
-    description: 'Small tests before anything becomes a bigger project.',
-  },
-  {
-    title: 'Devlogs',
-    description: 'Notes on feel, movement, difficulty, and what changed.',
-  },
-];
-
 ---
 
 <BaseLayout
   title="Games · Lincon Vidal"
-  description="Games, prototypes, and devlogs by Lincon Vidal."
+  description="Games by Lincon Vidal."
 >
   <section class="page-hero compact-hero games-hero">
     <p class="eyebrow">games</p>
-    <h1>Games. Mostly Pinote for now.</h1>
+    <h1>Mostly Pinote for now.</h1>
     <p class="lede">
-      Small prototypes and notes from trying to make movement feel right.
+      A small bike game about timing, weight, and bad landings.
     </p>
   </section>
 
   <section class="section split-section">
     <div>
-      <p class="eyebrow">things</p>
-      <h2>A few things.</h2>
+      <p class="eyebrow">pinote</p>
+      <h2>The bike keeps crashing.</h2>
     </div>
-    <div class="card-grid three-column">
-      {gameWork.map((item) => (
-        <article class="feature-card quiet-card">
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </article>
-      ))}
-    </div>
+    <article class="prose section-copy">
+      <p>
+        That is the thing I am trying to get right: weight, timing, landings, and crashes that are readable enough to be funny.
+      </p>
+    </article>
   </section>
-
 </BaseLayout>
