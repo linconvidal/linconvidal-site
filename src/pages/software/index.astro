@@ -4,23 +4,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const projects = [
   {
     title: 'Cobogó',
-    description: 'Spatial documents and visual notes. It started as a markdown renderer and got a little out of hand.',
-    meta: 'product',
+    description: 'A spatial markdown thing. It started as a renderer and got a little out of hand.',
   },
   {
-    title: 'Farol Wallet',
-    description: 'A Cardano wallet I am building for desktop and mobile.',
-    meta: 'wallet',
+    title: 'Farol',
+    description: 'A Cardano wallet I’m making because I wanted something quieter.',
   },
   {
     title: 'SpatialMD',
-    description: 'Markdown with layout blocks for guides, comparisons, flows, and visual explanations.',
-    meta: 'format',
-  },
-  {
-    title: 'Infrastructure work',
-    description: 'Cardano integrations, release notes, test plans, and the glue work around shipping.',
-    meta: 'systems',
+    description: 'A way to write diagrams and visual notes without opening a design tool.',
   },
 ];
 
@@ -28,25 +20,24 @@ const projects = [
 
 <BaseLayout
   title="Software · Lincon Vidal"
-  description="Software projects, tools, and systems by Lincon Vidal."
+  description="Software by Lincon Vidal."
 >
   <section class="page-hero compact-hero">
     <p class="eyebrow">software</p>
-    <h1>Software I’m building and maintaining.</h1>
+    <h1>Software I keep around.</h1>
     <p class="lede">
-      Wallets, publishing tools, docs, infrastructure, and small things that came out of my own work.
+      Some of it is public. Some of it is just how I organize my own work.
     </p>
   </section>
 
   <section class="section split-section">
     <div>
-      <p class="eyebrow">current work</p>
-      <h2>Current projects.</h2>
+      <p class="eyebrow">things</p>
+      <h2>A few things.</h2>
     </div>
-    <div class="card-grid two-column">
+    <div class="card-grid three-column">
       {projects.map((project) => (
-        <article class="feature-card">
-          <p class="card-meta">{project.meta}</p>
+        <article class="feature-card quiet-card">
           <h3>{project.title}</h3>
           <p>{project.description}</p>
         </article>

@@ -5,17 +5,14 @@ const gameWork = [
   {
     title: 'Pinote',
     description: 'A small bike game about timing, weight, and bad landings.',
-    meta: 'active',
   },
   {
     title: 'Prototypes',
-    description: 'One-mechanic tests before anything becomes a bigger project.',
-    meta: 'experiments',
+    description: 'Small tests before anything becomes a bigger project.',
   },
   {
     title: 'Devlogs',
     description: 'Notes on feel, movement, difficulty, and what changed.',
-    meta: 'writing',
   },
 ];
 
@@ -27,21 +24,20 @@ const gameWork = [
 >
   <section class="page-hero compact-hero games-hero">
     <p class="eyebrow">games</p>
-    <h1>Games I’m making. Mostly Pinote for now.</h1>
+    <h1>Games. Mostly Pinote for now.</h1>
     <p class="lede">
-      Pinote, small prototypes, and notes about game feel.
+      Small prototypes and notes from trying to make movement feel right.
     </p>
   </section>
 
   <section class="section split-section">
     <div>
-      <p class="eyebrow">workbench</p>
-      <h2>Current game work.</h2>
+      <p class="eyebrow">things</p>
+      <h2>A few things.</h2>
     </div>
     <div class="card-grid three-column">
       {gameWork.map((item) => (
-        <article class="feature-card">
-          <p class="card-meta">{item.meta}</p>
+        <article class="feature-card quiet-card">
           <h3>{item.title}</h3>
           <p>{item.description}</p>
         </article>
