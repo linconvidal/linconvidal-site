@@ -1,11 +1,71 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'Cobogó',
+    description: 'A place for spatial documents, visual explanations, and public thinking that does not fit a linear blog.',
+    meta: 'product / publishing',
+  },
+  {
+    title: 'Farol Wallet',
+    description: 'A Cardano wallet shaped around clarity, safer signing, and a quieter desktop and mobile experience.',
+    meta: 'wallet / Cardano',
+  },
+  {
+    title: 'SpatialMD',
+    description: 'A small language for arranging explanation on the page with grids, flows, panels, and comparisons.',
+    meta: 'tool / format',
+  },
+  {
+    title: 'Infrastructure work',
+    description: 'Cardano integrations, testing workflows, release notes, and the operational pieces that make software shippable.',
+    meta: 'systems / delivery',
+  },
+];
+
+const principles = [
+  'Software should explain itself before asking for trust.',
+  'A tool is better when it removes a recurring decision.',
+  'Good interfaces hide implementation details without hiding consequences.',
+];
 ---
 
-<BaseLayout title="Software · Lincon Vidal">
-  <p class="eyebrow">software</p>
-  <h1>Tools and systems with a point of view.</h1>
-  <p class="lede">
-    Cobogó, Farol, SpatialMD, Cardano infrastructure, and small utilities that came from real friction.
-  </p>
+<BaseLayout
+  title="Software · Lincon Vidal"
+  description="Software projects, tools, and systems by Lincon Vidal."
+>
+  <section class="page-hero compact-hero">
+    <p class="eyebrow">software</p>
+    <h1>Tools and systems with a point of view.</h1>
+    <p class="lede">
+      Products, infrastructure, formats, and small utilities that start from real friction.
+    </p>
+  </section>
+
+  <section class="section split-section">
+    <div>
+      <p class="eyebrow">current work</p>
+      <h2>Things I am building.</h2>
+    </div>
+    <div class="card-grid two-column">
+      {projects.map((project) => (
+        <article class="feature-card">
+          <p class="card-meta">{project.meta}</p>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section split-section">
+    <div>
+      <p class="eyebrow">working rules</p>
+      <h2>What keeps showing up.</h2>
+    </div>
+    <ol class="rule-list">
+      {principles.map((principle) => <li>{principle}</li>)}
+    </ol>
+  </section>
 </BaseLayout>

@@ -5,18 +5,40 @@ import { getCollection } from 'astro:content';
 const notes = (await getCollection('notes'))
   .filter((note) => !note.data.draft)
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+const pillars = ['software', 'photography', 'games', 'personal'];
 ---
 
-<BaseLayout title="Notes · Lincon Vidal">
-  <p class="eyebrow">notes / essays</p>
-  <h1>Notes that can breathe.</h1>
-  <p class="lede">Essays, devlogs, field notes, and public fragments.</p>
-  <div class="note-list">
-    {notes.map((note) => (
-      <a class="note-row" href={`/notes/${note.id}`}>
-        <span class="note-date">{note.data.publishedAt.toISOString().slice(0, 10)}</span>
-        <span>{note.data.title}</span>
-      </a>
-    ))}
-  </div>
+<BaseLayout
+  title="Notes · Lincon Vidal"
+  description="Essays, devlogs, field notes, and public fragments by Lincon Vidal."
+>
+  <section class="page-hero compact-hero">
+    <p class="eyebrow">notes / essays</p>
+    <h1>Notes that can breathe.</h1>
+    <p class="lede">
+      Essays, devlogs, field notes, and public fragments. No publishing schedule, no forced cadence.
+    </p>
+  </section>
+
+  <section class="section notes-index">
+    <aside class="notes-aside">
+      <p class="eyebrow">areas</p>
+      <div class="tag-list" aria-label="Note areas">
+        {pillars.map((pillar) => <span>{pillar}</span>)}
+      </div>
+    </aside>
+
+    <div class="note-list expanded-list">
+      {notes.map((note) => (
+        <a class="note-row expanded-row" href={`/notes/${note.id}`}>
+          <span class="note-date">{note.data.publishedAt.toISOString().slice(0, 10)}</span>
+          <span>
+            <strong>{note.data.title}</strong>
+            {note.data.description && <small>{note.data.description}</small>}
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

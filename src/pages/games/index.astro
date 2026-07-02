@@ -1,11 +1,66 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const gameWork = [
+  {
+    title: 'Pinote',
+    description: 'A small, kinetic game about timing, pressure, and readable movement.',
+    meta: 'active',
+  },
+  {
+    title: 'Prototypes',
+    description: 'Mechanic sketches that test a single verb before becoming a larger thing.',
+    meta: 'experiments',
+  },
+  {
+    title: 'Devlogs',
+    description: 'Notes about feel, animation, input, difficulty, and the choices behind the game.',
+    meta: 'writing',
+  },
+];
+
+const lenses = [
+  'Can the player read what happened?',
+  'Does the screen teach without pausing the game?',
+  'Is the moment fun before the system becomes large?',
+];
 ---
 
-<BaseLayout title="Games · Lincon Vidal">
-  <p class="eyebrow">games / cotinga</p>
-  <h1>Pinote and the pressure of play.</h1>
-  <p class="lede">
-    Pinote, prototypes, devlogs, and game systems under Cotinga Games.
-  </p>
+<BaseLayout
+  title="Games · Lincon Vidal"
+  description="Games, prototypes, and devlogs by Lincon Vidal."
+>
+  <section class="page-hero compact-hero games-hero">
+    <p class="eyebrow">games</p>
+    <h1>Small games with pressure and readable motion.</h1>
+    <p class="lede">
+      Pinote, prototypes, devlogs, and game systems under Cotinga Games.
+    </p>
+  </section>
+
+  <section class="section split-section">
+    <div>
+      <p class="eyebrow">workbench</p>
+      <h2>What is on the table.</h2>
+    </div>
+    <div class="card-grid three-column">
+      {gameWork.map((item) => (
+        <article class="feature-card">
+          <p class="card-meta">{item.meta}</p>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section split-section">
+    <div>
+      <p class="eyebrow">design lens</p>
+      <h2>The questions I keep asking.</h2>
+    </div>
+    <ol class="rule-list">
+      {lenses.map((lens) => <li>{lens}</li>)}
+    </ol>
+  </section>
 </BaseLayout>

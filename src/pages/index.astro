@@ -73,7 +73,7 @@ const homePhotographs = [
 
     <figure class="front-photo" data-photo-rotator>
       <img
-        data-photo-image
+        data-photograph
         src={homePhotographs[0].src}
         alt={homePhotographs[0].alt}
       />
@@ -104,22 +104,22 @@ const homePhotographs = [
     const data = document.getElementById('home-photographs')?.textContent ?? '[]';
     const photographs = JSON.parse(data);
     const root = document.querySelector('[data-photo-rotator]');
-    const image = root?.querySelector('[data-photo-image]');
+    const photographNode = root?.querySelector('[data-photograph]');
     const caption = root?.querySelector('[data-photo-caption]');
     const button = root?.querySelector('[data-next-photo]');
 
     let index = 0;
 
     button?.addEventListener('click', () => {
-      if (!image || !caption || photographs.length < 2) return;
+      if (!photographNode || !caption || photographs.length < 2) return;
 
       let next = Math.floor(Math.random() * photographs.length);
       if (next === index) next = (next + 1) % photographs.length;
       index = next;
 
       const photograph = photographs[index];
-      image.src = photograph.src;
-      image.alt = photograph.alt;
+      photographNode.src = photograph.src;
+      photographNode.alt = photograph.alt;
       caption.textContent = photograph.caption;
     });
   </script>
