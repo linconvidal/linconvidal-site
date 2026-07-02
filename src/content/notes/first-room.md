@@ -7,4 +7,4 @@ pillar: personal
 draft: false
 ---
 
-A small room for work that moves between code, images, games, and writing.
+A small room for work that moves between code, photography, games, and writing.
