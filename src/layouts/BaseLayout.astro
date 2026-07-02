@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Lincon Vidal',
+  description = 'Software, cities, visual arts, games, and notes by Lincon Vidal.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav" aria-label="Main navigation">
+        <a href="/" class="brand">Lincon Vidal</a>
+        <div class="nav-links">
+          <a href="/visuals">visuals</a>
+          <a href="/software">software</a>
+          <a href="/games">games</a>
+          <a href="/notes">notes</a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        linconvidal.com · static studio · no monthly rent
+      </div>
+    </footer>
+  </body>
+</html>

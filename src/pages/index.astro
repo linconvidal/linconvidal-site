@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const notes = (await getCollection('notes'))
+  .filter((note) => !note.data.draft)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">personal site · static studio</p>
+      <h1>Software, cities, images, games.</h1>
+    </div>
+    <div>
+      <p class="lede">
+        A public home for the things I build and notice: Cardano tooling, small games,
+        urban observations, visual essays, and notes that do not fit a social feed.
+      </p>
+      <div class="pill-row" aria-label="Site themes">
+        <span class="pill">Cobogó</span>
+        <span class="pill">Pinote</span>
+        <span class="pill">photography</span>
+        <span class="pill">urban form</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card-grid" aria-label="Site sections">
+    <a class="card" href="/visuals">
+      <span class="number">01</span>
+      <div>
+        <h3>Visuals</h3>
+        <p>Photo essays, zines, and future print editions. Not a stock gallery.</p>
+      </div>
+    </a>
+    <a class="card" href="/software">
+      <span class="number">02</span>
+      <div>
+        <h3>Software</h3>
+        <p>Tools, experiments, architecture notes, and things built for real use.</p>
+      </div>
+    </a>
+    <a class="card" href="/games">
+      <span class="number">03</span>
+      <div>
+        <h3>Games</h3>
+        <p>Pinote, Cotinga Games, procedural cities, motorcycles, and devlogs.</p>
+      </div>
+    </a>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow">latest notes</p>
+    <h2>Notes / essays</h2>
+    <div class="note-list">
+      {notes.map((note) => (
+        <a class="note-row" href={`/notes/${note.id}`}>
+          <span class="note-date">{note.data.publishedAt.toISOString().slice(0, 10)}</span>
+          <span>{note.data.title}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

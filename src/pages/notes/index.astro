@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const notes = (await getCollection('notes'))
+  .filter((note) => !note.data.draft)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<BaseLayout title="Notes · Lincon Vidal">
+  <p class="eyebrow">notes / essays</p>
+  <h1>Notes that can breathe.</h1>
+  <p class="lede">A blog when it wants to be a blog. Field notes, devlogs, visual thinking, and public drafts.</p>
+  <div class="note-list">
+    {notes.map((note) => (
+      <a class="note-row" href={`/notes/${note.id}`}>
+        <span class="note-date">{note.data.publishedAt.toISOString().slice(0, 10)}</span>
+        <span>{note.data.title}</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
