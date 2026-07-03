@@ -72,7 +72,7 @@ main { padding: clamp(26px, 5vw, 58px) 0; }
 
 .eyebrow {
   margin: 0 0 14px;
-  color: #667085;
+  color: #5b6474;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.78rem;
   font-weight: 700;
@@ -166,7 +166,8 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
 .front-photo img {
   display: block;
   width: 100%;
-  height: min(74vh, 780px);
+  aspect-ratio: 3 / 2;
+  height: auto;
   object-fit: cover;
   object-position: center;
   box-shadow: 0 22px 70px rgba(14, 18, 26, 0.14);
@@ -178,7 +179,7 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
   justify-content: space-between;
   gap: 16px;
   margin-top: 10px;
-  color: #667085;
+  color: #5b6474;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.82rem;
 }
@@ -258,7 +259,7 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
 .hero-polaroid img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
@@ -349,24 +350,18 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
 }
 
 .photo-tile {
+  grid-column: span 6;
   margin: 0;
 }
 
 .photo-tile img {
   display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
   object-fit: cover;
   background: #e5e7eb;
 }
-
-.photo-tile.landscape { grid-column: span 6; }
-.photo-tile.portrait { grid-column: span 3; }
-.photo-tile.square { grid-column: span 4; }
-
-.photo-tile.landscape img { aspect-ratio: 4 / 3; }
-.photo-tile.portrait img { aspect-ratio: 3 / 4; }
-.photo-tile.square img { aspect-ratio: 1; }
 
 .notes-index {
   display: grid;
@@ -433,16 +428,13 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
   }
 
   .front-intro { padding-top: 0; }
-  .front-photo img { height: min(58vh, 640px); }
   .notes-section,
   .split-section,
   .photography-hero,
   .notes-index { grid-template-columns: 1fr; }
   .two-column,
   .three-column { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .photo-tile.landscape,
-  .photo-tile.portrait,
-  .photo-tile.square { grid-column: span 6; }
+  .photo-tile { grid-column: span 6; }
 }
 
 @media (max-width: 640px) {
@@ -459,7 +451,6 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
   .lede { margin-top: 18px; }
   .front-list { grid-template-columns: 1fr; }
   .front-link { min-height: 112px; padding: 16px; }
-  .front-photo img { height: 44vh; }
   .page-hero { padding-top: 34px; }
   .page-hero h1 { font-size: clamp(2.7rem, 12vw, 4.5rem); }
   .two-column,
@@ -467,8 +458,6 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
   .feature-card { min-height: 168px; }
   .rule-list li { grid-template-columns: 1fr; gap: 8px; }
   .photo-grid { grid-template-columns: 1fr; }
-  .photo-tile.landscape,
-  .photo-tile.portrait,
-  .photo-tile.square { grid-column: auto; }
+  .photo-tile { grid-column: auto; }
   .note-row { grid-template-columns: 1fr; gap: 4px; }
 }

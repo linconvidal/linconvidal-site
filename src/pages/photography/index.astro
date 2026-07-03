@@ -6,37 +6,31 @@ const photographs = [
     src: '/photographs/home/paraty-street.jpg',
     alt: 'Street in Paraty photographed by Lincon Vidal',
     caption: 'Paraty, 2025',
-    orientation: 'portrait',
   },
   {
     src: '/photographs/home/paraty-canal.jpg',
     alt: 'Canal in Paraty photographed by Lincon Vidal',
     caption: 'Paraty, 2025',
-    orientation: 'landscape',
   },
   {
     src: '/photographs/home/yellow-door.jpg',
     alt: 'Yellow doorway in Paraty photographed by Lincon Vidal',
     caption: 'Paraty, 2025',
-    orientation: 'portrait',
   },
   {
     src: '/photographs/home/boats.jpg',
     alt: 'Boats on the water photographed by Lincon Vidal',
     caption: 'Paraty, 2025',
-    orientation: 'landscape',
   },
   {
     src: '/photographs/home/water-texture.jpg',
     alt: 'Water texture photographed by Lincon Vidal',
     caption: 'Paraty, 2025',
-    orientation: 'square',
   },
   {
     src: '/photographs/home/mountain.jpg',
     alt: 'Mountain near Paraty photographed by Lincon Vidal',
     caption: 'Paraty, 2025',
-    orientation: 'landscape',
   },
 ];
 ---
@@ -50,7 +44,7 @@ const photographs = [
       <p class="eyebrow">photography</p>
       <h1>Photographs from the archive.</h1>
       <p class="lede">
-        Some are loose. Some will stay loose.
+        Photographs I keep coming back to.
       </p>
     </div>
     <figure class="hero-polaroid">
@@ -62,11 +56,11 @@ const photographs = [
   <section class="section">
     <div class="section-heading">
       <p class="eyebrow">selected photographs</p>
-      <h2>Paraty, for now.</h2>
+      <h2>Paraty, 2025.</h2>
     </div>
     <div class="photo-grid">
       {photographs.map((photograph) => (
-        <figure class={`photo-tile ${photograph.orientation}`}>
+        <figure class="photo-tile">
           <img src={photograph.src} alt={photograph.alt} />
           <figcaption>{photograph.caption}</figcaption>
         </figure>

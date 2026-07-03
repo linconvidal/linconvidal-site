@@ -22,14 +22,15 @@ npm run build
 
 ## GitHub Pages release
 
-Deployment is configured with GitHub Actions in `.github/workflows/deploy.yml`.
+Deployment is built by GitHub Actions in `.github/workflows/deploy.yml` and published to the `gh-pages` branch.
 
 Expected setup:
 
 1. Push the repo to GitHub with `main` as the default branch.
-2. In GitHub repo settings, set **Pages > Build and deployment > Source** to **GitHub Actions**.
-3. Keep `public/CNAME` as `linconvidal.com` for the custom domain.
-4. Point DNS for `linconvidal.com` to GitHub Pages.
+2. In GitHub repo settings, set **Pages > Build and deployment > Source** to **Deploy from a branch**.
+3. Set the branch to **gh-pages** and the folder to **/**.
+4. Keep `public/CNAME` as `linconvidal.com` for the custom domain.
+5. Point DNS for `linconvidal.com` to GitHub Pages.
 
 Apex DNS records:
 
