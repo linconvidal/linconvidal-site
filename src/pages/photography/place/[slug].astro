@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
+import { getPhotos, groupByPlace } from '../../../lib/photos';
+
+export async function getStaticPaths() {
+  const photos = await getPhotos();
+  return [...groupByPlace(photos)].map(([slug, placePhotos]) => ({
+    params: { slug },
+    props: { place: placePhotos[0].data.place, photos: placePhotos },
+  }));
+}
+
+const { place, photos } = Astro.props;
+---
+
+<BaseLayout
+  title={`${place.title} · Photography · Lincon Vidal`}
+  description={`Photographs from ${place.title} by Lincon Vidal.`}
+>
+  <section class="page-hero compact-hero">
+    <p class="eyebrow">place</p>
+    <h1>{place.title}.</h1>
+  </section>
+
+  <section class="section">
+    <PhotoGrid photos={photos} />
+  </section>
+</BaseLayout>

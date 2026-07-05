@@ -13,7 +13,7 @@ const { note } = Astro.props;
 const { Content } = await render(note);
 ---
 
-<BaseLayout title={`${note.data.title} · Lincon Vidal`} description={note.data.description}>
+<BaseLayout title={`${note.data.title} · Notes · Lincon Vidal`} description={note.data.description}>
   <article class="prose">
     <p class="eyebrow">{note.data.publishedAt.toISOString().slice(0, 10)}</p>
     <h1>{note.data.title}</h1>

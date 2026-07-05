@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
+import { getPhotos, groupByTag } from '../../../lib/photos';
+
+export async function getStaticPaths() {
+  const photos = await getPhotos();
+  return [...groupByTag(photos)].map(([tag, tagPhotos]) => ({
+    params: { slug: tag },
+    props: { tag, photos: tagPhotos },
+  }));
+}
+
+const { tag, photos } = Astro.props;
+---
+
+<BaseLayout
+  title={`${tag} · Photography · Lincon Vidal`}
+  description={`Photographs tagged “${tag}” by Lincon Vidal.`}
+>
+  <section class="page-hero compact-hero">
+    <p class="eyebrow">tag</p>
+    <h1>{tag}.</h1>
+  </section>
+
+  <section class="section">
+    <PhotoGrid photos={photos} />
+  </section>
+</BaseLayout>

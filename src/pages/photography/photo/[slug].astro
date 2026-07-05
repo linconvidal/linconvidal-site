@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getPhotos, placeUrl, tagUrl, yearUrl } from '../../../lib/photos';
+
+export async function getStaticPaths() {
+  const photos = await getPhotos();
+  return photos.map((photo) => ({ params: { slug: photo.id }, props: { photo } }));
+}
+
+const { photo } = Astro.props;
+const { src, alt, title, year, place, tags } = photo.data;
+---
+
+<BaseLayout
+  title={`${title} · Photography · Lincon Vidal`}
+  description={`${title} — photographed by Lincon Vidal in ${place.title}, ${year}.`}
+>
+  <article class="photo-page">
+    <figure class="photo-frame">
+      <img src={src} alt={alt} />
+    </figure>
+    <footer class="photo-caption">
+      <h1>{title}</h1>
+      <div class="tag-list photo-page-meta">
+        <a href={placeUrl(place.slug)}>{place.title}</a>
+        <a href={yearUrl(year)}>{year}</a>
+        {tags.map((tag) => <a href={tagUrl(tag)}>{tag}</a>)}
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

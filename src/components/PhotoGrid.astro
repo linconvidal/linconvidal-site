@@ -1,0 +1,20 @@
+---
+import { photoUrl, type Photo } from '../lib/photos';
+
+interface Props {
+  photos: Photo[];
+}
+
+const { photos } = Astro.props;
+---
+
+<div class="photo-grid">
+  {photos.map((photo) => (
+    <figure class="photo-tile">
+      <a href={photoUrl(photo)}>
+        <img src={photo.data.src} alt={photo.data.alt} loading="lazy" />
+      </a>
+      <figcaption>{photo.data.title}</figcaption>
+    </figure>
+  ))}
+</div>

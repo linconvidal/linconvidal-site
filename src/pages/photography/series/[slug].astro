@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getSeries, getSeriesPhotos, photoUrl } from '../../../lib/photos';
+
+export async function getStaticPaths() {
+  const allSeries = await getSeries();
+  return Promise.all(
+    allSeries.map(async (series) => ({
+      params: { slug: series.id },
+      props: { series, photos: await getSeriesPhotos(series) },
+    })),
+  );
+}
+
+const { series, photos } = Astro.props;
+---
+
+<BaseLayout
+  title={`${series.data.title} · Photography · Lincon Vidal`}
+  description={series.data.description ?? `${series.data.title}, a photographic series by Lincon Vidal.`}
+>
+  <section class="page-hero compact-hero">
+    <p class="eyebrow">series</p>
+    <h1>{series.data.title}.</h1>
+    {series.data.description && <p class="lede">{series.data.description}</p>}
+  </section>
+
+  <section class="section">
+    <div class="photo-sequence">
+      {photos.map((photo) => (
+        <figure class="photo-tile">
+          <a href={photoUrl(photo)}>
+            <img src={photo.data.src} alt={photo.data.alt} loading="lazy" />
+          </a>
+          <figcaption>{photo.data.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

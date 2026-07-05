@@ -1,0 +1,56 @@
+[
+  {
+    "id": "paraty-street",
+    "src": "/photographs/home/paraty-street.jpg",
+    "alt": "Person walking down a cobblestone street lined with white colonial houses in Paraty",
+    "title": "Street in the historic center",
+    "year": 2025,
+    "place": { "slug": "paraty", "title": "Paraty" },
+    "tags": ["streets", "architecture"]
+  },
+  {
+    "id": "paraty-canal",
+    "src": "/photographs/home/paraty-canal.jpg",
+    "alt": "Man leaning on a bridge railing, looking over a canal with moored boats and palm trees in Paraty",
+    "title": "Canal from the bridge",
+    "year": 2025,
+    "place": { "slug": "paraty", "title": "Paraty" },
+    "tags": ["water", "boats"]
+  },
+  {
+    "id": "paraty-yellow-door",
+    "src": "/photographs/home/yellow-door.jpg",
+    "alt": "Yellow-framed doorway of a small clothing shop set in a white wall in Paraty",
+    "title": "Yellow doorway",
+    "year": 2025,
+    "place": { "slug": "paraty", "title": "Paraty" },
+    "tags": ["architecture"]
+  },
+  {
+    "id": "paraty-boats",
+    "src": "/photographs/home/boats.jpg",
+    "alt": "Small motorboat crossing the canal in Paraty, with trees and boat sheds along the bank",
+    "title": "Boat on the canal",
+    "year": 2025,
+    "place": { "slug": "paraty", "title": "Paraty" },
+    "tags": ["water", "boats"]
+  },
+  {
+    "id": "paraty-water",
+    "src": "/photographs/home/water-texture.jpg",
+    "alt": "Ripples on green sea water",
+    "title": "Green water",
+    "year": 2025,
+    "place": { "slug": "paraty", "title": "Paraty" },
+    "tags": ["water"]
+  },
+  {
+    "id": "paraty-mountain",
+    "src": "/photographs/home/mountain.jpg",
+    "alt": "Bare rock peak rising above dense forest under a blue sky near Paraty",
+    "title": "Mountain above the forest",
+    "year": 2025,
+    "place": { "slug": "paraty", "title": "Paraty" },
+    "tags": ["landscape"]
+  }
+]

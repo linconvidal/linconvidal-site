@@ -1,76 +1,72 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { getPhotos } from '../lib/photos';
 
 const notes = (await getCollection('notes'))
   .filter((note) => !note.data.draft)
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
   .slice(0, 3);
 
-const homePhotographs = [
-  {
-    src: '/photographs/home/paraty-street.jpg',
-    alt: 'Street in Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/paraty-canal.jpg',
-    alt: 'Canal in Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/yellow-door.jpg',
-    alt: 'Yellow doorway in Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/boats.jpg',
-    alt: 'Boats on the water photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/water-texture.jpg',
-    alt: 'Water texture photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/mountain.jpg',
-    alt: 'Mountain near Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-];
+const homePhotographs = (await getPhotos()).map((photo) => ({
+  src: photo.data.src,
+  alt: photo.data.alt,
+  caption: `${photo.data.place.title}, ${photo.data.year}`,
+}));
 ---
 
 <BaseLayout>
   <section class="front-hero">
-    <div class="front-intro">
-      <h1>Software, photography, games, notes.</h1>
-      <p class="lede">Things I made and want to keep in one place.</p>
-    </div>
+    <h1 class="front-opening">Things I made and want to keep in one place.</h1>
 
     <div class="front-list" aria-label="Main sections">
-      <a class="front-link" href="/photography">
-        <span class="front-number">01</span>
+      <a class="front-link" href="/photography/">
+        <span class="front-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square">
+            <rect x="1.5" y="1.5" width="13" height="13" />
+            <circle cx="8" cy="8" r="3.5" />
+          </svg>
+        </span>
         <strong>Photography</strong>
-        <span>Photographs and edits.</span>
+        <span>Images I keep coming back to.</span>
       </a>
-      <a class="front-link" href="/software">
-        <span class="front-number">02</span>
+      <a class="front-link" href="/software/">
+        <span class="front-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square">
+            <polyline points="2.5 4 6.5 8 2.5 12" />
+            <line x1="8.5" y1="12.5" x2="13.5" y2="12.5" />
+          </svg>
+        </span>
         <strong>Software</strong>
-        <span>Cobogó, Farol, SpatialMD.</span>
+        <span>Tools I'm building for myself.</span>
       </a>
-      <a class="front-link" href="/games">
-        <span class="front-number">03</span>
+      <a class="front-link" href="/games/">
+        <span class="front-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square">
+            <rect x="1.5" y="1.5" width="13" height="13" rx="2.5" />
+            <circle cx="5.1" cy="5.1" r="1.15" fill="currentColor" stroke="none" />
+            <circle cx="8" cy="8" r="1.15" fill="currentColor" stroke="none" />
+            <circle cx="10.9" cy="10.9" r="1.15" fill="currentColor" stroke="none" />
+          </svg>
+        </span>
         <strong>Games</strong>
-        <span>Pinote.</span>
+        <span>Small systems made for play.</span>
       </a>
-      <a class="front-link" href="/notes">
-        <span class="front-number">04</span>
+      <a class="front-link" href="/notes/">
+        <span class="front-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square">
+            <line x1="2" y1="4" x2="14" y2="4" />
+            <line x1="2" y1="8" x2="14" y2="8" />
+            <line x1="2" y1="12" x2="9" y2="12" />
+          </svg>
+        </span>
         <strong>Notes</strong>
-        <span>Writing worth keeping around.</span>
+        <span>Writing and decisions worth keeping.</span>
       </a>
     </div>
+  </section>
 
+  <section class="front-photo-band">
     <figure class="front-photo" data-photo-rotator>
       <img
         data-photograph
@@ -84,16 +80,15 @@ const homePhotographs = [
     </figure>
   </section>
 
-  <section class="section notes-section">
-    <div>
-      <p class="eyebrow">notes</p>
-      <h2>Recent notes</h2>
-    </div>
-    <div class="note-list">
+  <section class="front-notes">
+    <h2 class="front-notes-title">Recent notes</h2>
+    <div class="front-note-flow">
       {notes.map((note) => (
-        <a class="note-row" href={`/notes/${note.id}`}>
-          <span class="note-date">{note.data.publishedAt.toISOString().slice(0, 10)}</span>
-          <span>{note.data.title}</span>
+        <a class="front-note" href={`/notes/${note.id}/`}>
+          <span class="front-note-heading">{note.data.title}</span>
+          <time class="front-note-date" datetime={note.data.publishedAt.toISOString().slice(0, 10)}>
+            {note.data.publishedAt.toISOString().slice(0, 10)}
+          </time>
         </a>
       ))}
     </div>

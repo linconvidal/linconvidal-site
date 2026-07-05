@@ -1,38 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PhotoGrid from '../../components/PhotoGrid.astro';
+import {
+  getPhotos,
+  getSeries,
+  photoUrl,
+  placeUrl,
+  selectionsByPlaceYear,
+  seriesUrl,
+  yearUrl,
+} from '../../lib/photos';
 
-const photographs = [
-  {
-    src: '/photographs/home/paraty-street.jpg',
-    alt: 'Street in Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/paraty-canal.jpg',
-    alt: 'Canal in Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/yellow-door.jpg',
-    alt: 'Yellow doorway in Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/boats.jpg',
-    alt: 'Boats on the water photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/water-texture.jpg',
-    alt: 'Water texture photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-  {
-    src: '/photographs/home/mountain.jpg',
-    alt: 'Mountain near Paraty photographed by Lincon Vidal',
-    caption: 'Paraty, 2025',
-  },
-];
+const photos = await getPhotos();
+const selections = selectionsByPlaceYear(photos);
+const allSeries = await getSeries();
+
+const heroPhoto = photos.find((photo) => photo.id === 'paraty-yellow-door') ?? photos[0];
 ---
 
 <BaseLayout
@@ -42,29 +25,49 @@ const photographs = [
   <section class="page-hero photography-hero">
     <div>
       <p class="eyebrow">photography</p>
-      <h1>Photographs from the archive.</h1>
+      <h1>Photographs I take.</h1>
       <p class="lede">
-        Photographs I keep coming back to.
+        The ones I keep coming back to.
       </p>
     </div>
-    <figure class="hero-polaroid">
-      <img src="/photographs/home/yellow-door.jpg" alt="Yellow doorway in Paraty photographed by Lincon Vidal" />
-      <figcaption>Paraty, 2025</figcaption>
-    </figure>
+    {heroPhoto && (
+      <figure class="hero-polaroid">
+        <a href={photoUrl(heroPhoto)}>
+          <img src={heroPhoto.data.src} alt={heroPhoto.data.alt} />
+        </a>
+        <figcaption>{heroPhoto.data.place.title}, {heroPhoto.data.year}</figcaption>
+      </figure>
+    )}
   </section>
 
-  <section class="section">
-    <div class="section-heading">
-      <p class="eyebrow">selected photographs</p>
-      <h2>Paraty, 2025.</h2>
-    </div>
-    <div class="photo-grid">
-      {photographs.map((photograph) => (
-        <figure class="photo-tile">
-          <img src={photograph.src} alt={photograph.alt} />
-          <figcaption>{photograph.caption}</figcaption>
-        </figure>
-      ))}
-    </div>
-  </section>
+  {selections.map((selection) => (
+    <section class="section">
+      <div class="section-heading">
+        <h2 class="selection-title">
+          <a href={placeUrl(selection.place.slug)}>{selection.place.title}</a>,{' '}
+          <a href={yearUrl(selection.year)}>{selection.year}</a>
+        </h2>
+      </div>
+      <PhotoGrid photos={selection.photos} />
+    </section>
+  ))}
+
+  {allSeries.length > 0 && (
+    <section class="section">
+      <div class="section-heading">
+        <h2>Series.</h2>
+      </div>
+      <div class="note-list expanded-list">
+        {allSeries.map((series) => (
+          <a class="note-row expanded-row" href={seriesUrl(series)}>
+            <span class="note-date">{series.data.photos.length} photographs</span>
+            <span>
+              <strong>{series.data.title}</strong>
+              {series.data.description && <small>{series.data.description}</small>}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>

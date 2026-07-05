@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
+import { getPhotos, groupByYear } from '../../../lib/photos';
+
+export async function getStaticPaths() {
+  const photos = await getPhotos();
+  return [...groupByYear(photos)].map(([year, yearPhotos]) => ({
+    params: { yyyy: String(year) },
+    props: { year, photos: yearPhotos },
+  }));
+}
+
+const { year, photos } = Astro.props;
+---
+
+<BaseLayout
+  title={`${year} · Photography · Lincon Vidal`}
+  description={`Photographs from ${year} by Lincon Vidal.`}
+>
+  <section class="page-hero compact-hero">
+    <p class="eyebrow">year</p>
+    <h1>{year}.</h1>
+  </section>
+
+  <section class="section">
+    <PhotoGrid photos={photos} />
+  </section>
+</BaseLayout>

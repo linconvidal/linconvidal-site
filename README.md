@@ -6,10 +6,10 @@ A small personal site for photographs, software, games, and notes. Built with As
 
 ## Sections
 
-- `/photography`: photographs and edits.
-- `/software`: Cobogó, Farol, and SpatialMD.
-- `/games`: mostly Pinote for now.
-- `/notes`: writing worth keeping around.
+- `/photography`: images I keep coming back to.
+- `/software`: tools I am building for myself.
+- `/games`: small systems made for play.
+- `/notes`: writing and decisions worth keeping.
 
 ## Commands
 

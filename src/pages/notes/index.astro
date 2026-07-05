@@ -22,7 +22,7 @@ const notes = (await getCollection('notes'))
   <section class="section notes-index simple-notes-index">
     <div class="note-list expanded-list">
       {notes.map((note) => (
-        <a class="note-row expanded-row" href={`/notes/${note.id}`}>
+        <a class="note-row expanded-row" href={`/notes/${note.id}/`}>
           <span class="note-date">{note.data.publishedAt.toISOString().slice(0, 10)}</span>
           <span>
             <strong>{note.data.title}</strong>
