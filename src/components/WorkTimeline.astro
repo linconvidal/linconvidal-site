@@ -1,0 +1,109 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entries: CollectionEntry<'work'>[];
+  showKindKey?: boolean;
+}
+
+const {
+  entries,
+  showKindKey = true,
+} = Astro.props;
+
+const statusLabels: Record<CollectionEntry<'work'>['data']['status'], string> = {
+  active: 'in progress',
+  paused: 'paused',
+  experiment: 'experiment',
+  unfinished: 'unfinished',
+  archived: 'archived',
+};
+
+// One primary form per kind: the mark each entry hangs from the spine by.
+// Filled while the work is still moving, outlined once it rests.
+const kindShapes: Record<CollectionEntry<'work'>['data']['kind'], string> = {
+  software: '<rect x="1.9" y="1.9" width="8.2" height="8.2" />',
+  game: '<circle cx="6" cy="6" r="4.35" />',
+};
+
+const entryUrl = (entry: CollectionEntry<'work'>) =>
+  entry.data.kind === 'game' ? `/games/${entry.id}/` : `/software/${entry.id}/`;
+
+// Newest year first. Within a year, entries with an exact start come before
+// "by" entries, whose real start may be older than the year they sit under.
+const precisionOrder = { year: 0, by: 1 };
+const years = [...new Set(entries.map((entry) => entry.data.started))]
+  .sort((a, b) => b - a)
+  .map((year) => ({
+    year,
+    entries: entries
+      .filter((entry) => entry.data.started === year)
+      .sort(
+        (a, b) =>
+          precisionOrder[a.data.startedPrecision] -
+          precisionOrder[b.data.startedPrecision],
+      ),
+  }));
+
+function metaLine(entry: CollectionEntry<'work'>) {
+  return [
+    entry.data.startedPrecision === 'by' ? `by ${entry.data.started}` : null,
+    showKindKey ? entry.data.kind : null,
+    statusLabels[entry.data.status],
+    entry.data.statusNote,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}
+
+// A single running index across years drives the staggered reveal.
+let reveal = 0;
+---
+
+<section class="section timeline">
+  {showKindKey && (
+    <p class="timeline-key" aria-hidden="true">
+      {Object.entries(kindShapes).map(([kind, shape]) => (
+        <span class="timeline-key-item">
+          <svg viewBox="0 0 12 12" width="11" height="11"><Fragment set:html={shape} /></svg>
+          {kind}
+        </span>
+      ))}
+      <span class="timeline-key-note">filled while it moves</span>
+    </p>
+  )}
+
+  {years.map(({ year, entries }) => (
+    <section class="timeline-year">
+      <h2 class="timeline-year-label" style={`--i: ${reveal}`}>{year}</h2>
+      <div class="timeline-entries">
+        {entries.map((entry) => (
+          <article
+            class:list={[
+              'timeline-entry',
+              { 'is-active': entry.data.status === 'active' },
+            ]}
+            style={`--i: ${++reveal}`}
+          >
+            <span class="timeline-mark" role="img" aria-label={entry.data.kind}>
+              <svg viewBox="0 0 12 12" width="11" height="11"><Fragment set:html={kindShapes[entry.data.kind]} /></svg>
+            </span>
+            <p class="timeline-meta">{metaLine(entry)}</p>
+            <h3 class="timeline-title"><a href={entryUrl(entry)}>{entry.data.title}</a></h3>
+            <p class="timeline-summary">{entry.data.summary}</p>
+            {entry.data.origin && (
+              <p class="timeline-origin">{entry.data.origin}</p>
+            )}
+            {entry.data.links.length > 0 && (
+              <ul class="timeline-links">
+                {entry.data.links.map((link) => (
+                  <li><a href={link.href}>{link.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</section>

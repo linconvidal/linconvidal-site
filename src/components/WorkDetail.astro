@@ -1,0 +1,108 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  section: 'software' | 'games';
+}
+
+const { entry, section } = Astro.props;
+const {
+  title,
+  summary,
+  origin,
+  kind,
+  started,
+  startedPrecision,
+  status,
+  statusNote,
+  links,
+  lede,
+  image,
+  sections,
+} = entry.data;
+
+const statusLabels: Record<CollectionEntry<'work'>['data']['status'], string> = {
+  active: 'in progress',
+  paused: 'paused',
+  experiment: 'experiment',
+  unfinished: 'unfinished',
+  archived: 'archived',
+};
+
+const kindLabels: Record<CollectionEntry<'work'>['data']['kind'], string> = {
+  software: 'software',
+  game: 'game',
+};
+
+const startedLabel = startedPrecision === 'by' ? `by ${started}` : String(started);
+const stateLabel = [statusLabels[status], statusNote].filter(Boolean).join(' · ');
+const sectionLabel = section === 'games' ? 'games' : 'software';
+const displaySections = [
+  ...(origin
+    ? [{ kicker: 'origin', title: 'The first shape.', body: [origin] }]
+    : []),
+  ...sections,
+];
+---
+
+<article class="work-page">
+  <a class="work-back" href={`/${section}/`}>← {sectionLabel}</a>
+
+  <header class="work-hero">
+    <div class="work-hero-copy">
+      <p class="eyebrow">{kindLabels[kind]}</p>
+      <h1>{title}</h1>
+      <p class="work-hero-summary">{lede || summary}</p>
+    </div>
+    <dl class="work-facts" aria-label="Facts">
+      <div>
+        <dt>kind</dt>
+        <dd>{kindLabels[kind]}</dd>
+      </div>
+      <div>
+        <dt>started</dt>
+        <dd>{startedLabel}</dd>
+      </div>
+      <div>
+        <dt>state</dt>
+        <dd>{stateLabel}</dd>
+      </div>
+    </dl>
+  </header>
+
+  {image && (
+    <figure class="work-media">
+      <img src={image.src} alt={image.alt} loading="eager" />
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
+  )}
+
+  <section class="work-intro" aria-label="Short summary">
+    <p>{summary}</p>
+  </section>
+
+  {displaySections.map((item) => (
+    <section class="work-section" aria-labelledby={`${entry.id}-${item.kicker}-title`}>
+      <p class="work-section-kicker">{item.kicker}</p>
+      <div>
+        <h2 id={`${entry.id}-${item.kicker}-title`}>{item.title}</h2>
+        {item.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </section>
+  ))}
+
+  {links.length > 0 && (
+    <section class="work-section" aria-labelledby={`${entry.id}-links-title`}>
+      <p class="work-section-kicker">links</p>
+      <div>
+        <h2 id={`${entry.id}-links-title`}>Artifacts and exits.</h2>
+        <ul class="work-link-list">
+          {links.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+</article>

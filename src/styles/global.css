@@ -413,6 +413,331 @@ main:has(.front-hero) {
   letter-spacing: 0;
 }
 
+/* Work ledger: one hairline spine; the years stand beside it as large,
+   light numerals — monuments rather than headings. Each entry hangs from the
+   spine by the primary form of its kind (square = software, circle = game),
+   filled in the accent while the work is still moving, outlined in ink once
+   it rests. A small key above the first year explains the geometry; a short
+   crossbar closes the spine after the last entry. */
+.timeline {
+  --year-col: clamp(8.5rem, 16vw, 10.5rem);
+  --spine-gap: clamp(24px, 3.5vw, 38px);
+  max-width: 880px;
+}
+
+.timeline-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  margin: 0 0 clamp(36px, 5vw, 60px) calc(var(--year-col) + var(--spine-gap) + 1px);
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.timeline-key-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-key-item svg {
+  display: block;
+  width: 10px;
+  height: 10px;
+  fill: var(--paper);
+  stroke: var(--line-strong);
+  stroke-width: 1.3;
+}
+
+.timeline-key-note {
+  margin-left: auto;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.timeline-year {
+  display: grid;
+  grid-template-columns: var(--year-col) minmax(0, 1fr);
+}
+
+.timeline-year-label {
+  align-self: start;
+  position: sticky;
+  top: 26px;
+  font-size: clamp(2.5rem, 4.6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-entries {
+  display: grid;
+  gap: clamp(40px, 5.5vw, 60px);
+  border-left: 1px solid var(--line-strong);
+  padding: 8px 0 clamp(64px, 9vw, 104px) var(--spine-gap);
+}
+
+.timeline-year:last-of-type .timeline-entries {
+  padding-bottom: clamp(40px, 6vw, 56px);
+}
+
+.timeline-entry {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.timeline-mark {
+  position: absolute;
+  top: 9px;
+  left: calc(-1 * var(--spine-gap) - 0.5px);
+  transform: translate(-50%, -50%);
+}
+
+.timeline-mark svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  fill: var(--paper);
+  stroke: var(--line-strong);
+  stroke-width: 1.3;
+}
+
+.timeline-entry.is-active .timeline-mark svg {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.timeline-meta {
+  margin: 0;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.timeline-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+.timeline-title a {
+  text-decoration: none;
+}
+
+.timeline-title a:hover {
+  color: var(--accent);
+}
+
+.timeline-summary {
+  margin: 0;
+  max-width: 54ch;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.5vw, 1.12rem);
+  line-height: 1.6;
+}
+
+/* Lineage: what an entry grew out of. A quiet italic aside off a soft rule,
+   so a killed predecessor stays part of the record without its own entry. */
+.timeline-origin {
+  margin: 4px 0 0;
+  max-width: 50ch;
+  padding-left: 14px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.timeline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-year-label,
+  .timeline-entry {
+    animation: timeline-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
+}
+
+@keyframes timeline-rise {
+  from { transform: translateY(12px); }
+  to { transform: none; }
+}
+
+.work-page {
+  max-width: 1060px;
+  padding: clamp(34px, 6vw, 80px) 0 clamp(20px, 4vw, 44px);
+}
+
+.work-back {
+  display: inline-flex;
+  margin-bottom: clamp(34px, 6vw, 72px);
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.work-back:hover { color: var(--accent); }
+
+.work-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+  gap: clamp(30px, 6vw, 78px);
+  align-items: end;
+  padding-bottom: clamp(38px, 7vw, 86px);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.work-hero-copy {
+  display: grid;
+  gap: clamp(18px, 3vw, 28px);
+}
+
+.work-hero .eyebrow { margin-bottom: 0; }
+
+.work-hero h1 {
+  max-width: none;
+  font-size: clamp(4rem, 11vw, 9rem);
+}
+
+.work-hero-summary {
+  max-width: 36ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.22;
+}
+
+.work-facts {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.work-facts div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-facts dt,
+.work-section-kicker {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.work-facts dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.work-media {
+  margin: clamp(34px, 6vw, 76px) 0 0;
+  padding-bottom: clamp(30px, 5vw, 54px);
+  border-bottom: 1px solid var(--line);
+}
+
+.work-media img {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 760px);
+  object-fit: contain;
+  background: #0f141d;
+  border: 1px solid var(--line-strong);
+}
+
+.work-media figcaption {
+  max-width: 62ch;
+  margin-top: 14px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.work-intro {
+  padding: clamp(30px, 6vw, 62px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-intro p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.work-section {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: clamp(22px, 5vw, 64px);
+  padding: clamp(30px, 6vw, 62px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.work-section h2 {
+  max-width: 22ch;
+  font-size: clamp(1.9rem, 4vw, 3.6rem);
+}
+
+.work-section p {
+  max-width: 60ch;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.work-section-kicker {
+  margin: 6px 0 0;
+}
+
+.work-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86rem;
+}
+
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -626,4 +951,21 @@ main:has(.photo-page) { padding-top: 0; }
   .photo-page { --photo-viewport: calc(100svh - 136px); }
   .photo-frame { min-height: 0; margin-top: 14px; }
   .note-row { grid-template-columns: 1fr; gap: 4px; }
+  /* The year figure moves above its entries; the spine stays. */
+  .timeline { --spine-gap: 22px; }
+  .timeline-key { margin: 0 0 36px; gap: 8px 18px; }
+  .timeline-key-note { margin-left: 0; flex-basis: 100%; }
+  .timeline-year { grid-template-columns: 1fr; }
+  .timeline-year-label {
+    position: static;
+    margin: 0 0 24px;
+    font-size: 2.5rem;
+  }
+  .timeline-entries { gap: 40px; padding-bottom: 56px; }
+  .timeline-year:last-of-type .timeline-entries { padding-bottom: 40px; }
+  .work-hero,
+  .work-archive-note,
+  .work-section { grid-template-columns: 1fr; }
+  .work-hero h1 { font-size: clamp(3rem, 16vw, 5rem); }
+  .work-facts div { grid-template-columns: 1fr; gap: 2px; }
 }

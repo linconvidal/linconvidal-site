@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkTimeline from '../../components/WorkTimeline.astro';
+import { getCollection } from 'astro:content';
+
+const games = (await getCollection('work')).filter((entry) => entry.data.kind === 'game');
 ---
 
 <BaseLayout
@@ -9,9 +13,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="page-hero compact-hero games-hero">
     <p class="eyebrow">games</p>
     <h1>Games I make.</h1>
-    <p class="lede">
-      The first is Pinote, a bike game.
-      It lives at <a href="https://cotinga.games/">cotinga.games</a>.
-    </p>
+    <p class="lede">Games and prototypes made for play. The first is Pinote, a bike game.</p>
   </section>
+
+  <WorkTimeline entries={games} showKindKey={false} />
 </BaseLayout>

@@ -7,8 +7,8 @@ A small personal site for photographs, software, games, and notes. Built with As
 ## Sections
 
 - `/photography`: images I keep coming back to.
-- `/software`: tools I am building for myself.
-- `/games`: small systems made for play.
+- `/software`: software I am building, by year.
+- `/games`: games and prototypes, by year.
 - `/notes`: writing and decisions worth keeping.
 
 ## Commands

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkDetail from '../../components/WorkDetail.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('work');
+  return entries
+    .filter((entry) => entry.data.kind === 'game')
+    .map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'work'> };
+const description = `${entry.data.summary} Game page in Lincon Vidal's personal archive.`;
+---
+
+<BaseLayout title={`${entry.data.title} · Games · Lincon Vidal`} description={description}>
+  <WorkDetail entry={entry} section="games" />
+</BaseLayout>

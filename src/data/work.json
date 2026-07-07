@@ -1,0 +1,162 @@
+[
+  {
+    "id": "cobogo",
+    "title": "Cobogó",
+    "summary": "Local-first spatial workspace for Markdown. It started as a renderer, then folders became part of the idea.",
+    "origin": "SpatialMD was the first step: a way to write diagrams and visual notes in plain text. That version is dead. Cobogó is the idea that survived it.",
+    "kind": "software",
+    "started": 2026,
+    "startedPrecision": "by",
+    "status": "active",
+    "statusNote": "not public yet",
+    "image": {
+      "src": "/work/cobogo-folder-scene.png",
+      "alt": "Cobogó showing a dark spatial workspace with folders and markdown pages arranged on a canvas.",
+      "caption": "A folder scene in the current Kotlin Multiplatform build. Still just local files underneath."
+    },
+    "lede": "I thought the problem was rendering Markdown. Then editing pulled the document onto a surface. Then the same question started applying to folders.",
+    "sections": [
+      {
+        "kicker": "why",
+        "title": "Files should not always feel like lists.",
+        "body": [
+          "Markdown is good because it survives tools. Most Markdown apps still make the work feel like a tree, a sidebar, and a pile of tabs.",
+          "Cobogó keeps the files local, then gives folders and documents a spatial surface where position can carry meaning too."
+        ]
+      },
+      {
+        "kicker": "shape",
+        "title": "A renderer became a workspace.",
+        "body": [
+          "The current build has a shared parser and renderer, folder scenes, draggable cards, source editing, search, image previews, live refresh, and persisted layouts.",
+          "The desktop app is the real testbed. Android and iOS exist as targets, but the public promise is not there yet."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "Active, but not announced.",
+        "body": [
+          "It is past the pure demo stage and still before the clean public story. The next work is packaging, sharper examples, and deciding what the first real use case should be."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "farol",
+    "title": "Farol",
+    "summary": "A testnet Cardano wallet for people who want the wallet to talk to their own node.",
+    "kind": "software",
+    "started": 2026,
+    "startedPrecision": "by",
+    "status": "active",
+    "statusNote": "testnet only",
+    "image": {
+      "src": "/work/farol-wallet-summary.png",
+      "alt": "Farol wallet summary screen with a dark interface, wallet balance, and preprod testnet badge.",
+      "caption": "A desktop-first wallet UI over a self-hosted cardano-wallet backend. Preprod only."
+    },
+    "lede": "Farol means lighthouse. The product line is simple: your wallet, your node. No cloud custody story, no mainnet promise, no fake balance screen.",
+    "sections": [
+      {
+        "kicker": "why",
+        "title": "A calm UI over real wallet plumbing.",
+        "body": [
+          "A lot of wallet prototypes either hide the node completely or expose every backend detail as debug noise.",
+          "Farol tries the middle ground: a restrained interface over real cardano-wallet endpoints, with the dangerous parts labeled and gated."
+        ]
+      },
+      {
+        "kicker": "shape",
+        "title": "Desktop first, testnet first.",
+        "body": [
+          "It talks to cardano-wallet and a local cardano-node socket. Wallet list, restore, balances, addresses, transactions, fee estimates, send flow, staking, settings, explorer links, and Farol Connect are wired through real flows."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "The safety boundary is part of the product.",
+        "body": [
+          "Farol is preprod and testnet only for now. That is not a footnote. It is the line that keeps the app honest while the interaction model is still being shaped."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pinote",
+    "title": "Pinote",
+    "summary": "A bike game where the crashes are part of the design process.",
+    "kind": "game",
+    "started": 2026,
+    "startedPrecision": "by",
+    "status": "active",
+    "statusNote": "playable prototype",
+    "image": {
+      "src": "/work/pinote-gameplay.jpg",
+      "alt": "Pinote gameplay showing a red motorcycle jumping across low buildings in a stylized Brazilian city.",
+      "caption": "A frame from the public gameplay video. The landing is usually the interesting part."
+    },
+    "lede": "Pinote is a motorcycle game built in Bevy. The point is not a pristine racing sim. It is the moment when a jump almost works and the crash is funny enough to keep.",
+    "sections": [
+      {
+        "kicker": "why",
+        "title": "Feel first, explanation later.",
+        "body": [
+          "This is where I tune things directly: bike mass, wheelies, jumps, air control, ragdolls, traffic, and the rhythm of a city that keeps giving you bad ideas."
+        ]
+      },
+      {
+        "kicker": "shape",
+        "title": "A little city to make mistakes in.",
+        "body": [
+          "The prototype uses Bevy, Avian physics, procedural city generation, dynamic chunks, traffic, scoring, replay hooks, and a small public gameplay page at cotinga.games."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "Playable, rough, still alive.",
+        "body": [
+          "The best screenshots are usually accidents. That is useful: when the accident is fun, the game is pointing at what it wants to become."
+        ]
+      }
+    ],
+    "links": [{ "label": "cotinga.games", "href": "https://cotinga.games/" }]
+  },
+  {
+    "id": "linconvidal-site",
+    "title": "linconvidal.com",
+    "summary": "This site. A quiet archive for photos, software, games, and notes.",
+    "kind": "software",
+    "started": 2026,
+    "status": "active",
+    "image": {
+      "src": "/work/linconvidal-site-home.png",
+      "alt": "linconvidal.com homepage with large typography, a photograph, and links to photography, software, games, and notes.",
+      "caption": "The site became the container for the rest: photographs first, but not photographs only."
+    },
+    "lede": "I wanted a quieter site again. Photographs are still the center, but not the whole thing. Software, games, and notes also need somewhere to land when they are worth keeping around.",
+    "sections": [
+      {
+        "kicker": "why",
+        "title": "One address for the things that should not disappear.",
+        "body": [
+          "The old shape was too narrow. I wanted a place that could hold photographs, small notes, and pages for things I have built without turning everything into a pitch deck."
+        ]
+      },
+      {
+        "kicker": "shape",
+        "title": "Static on purpose.",
+        "body": [
+          "It is an Astro site with photography pages, notes, software and games timelines, and individual work pages that can grow as each thing accumulates screenshots, links, and context."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "The site is also a work in progress.",
+        "body": [
+          "This page is a test case for the whole site: show work clearly, keep the voice human, and avoid pretending that unfinished things are finished."
+        ]
+      }
+    ],
+    "links": [{ "label": "the note about it", "href": "/notes/new-site/" }]
+  }
+]
