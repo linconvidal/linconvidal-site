@@ -98,17 +98,14 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
 }
 
-/* Homepage vertical rhythm: one band unit separates the masthead band, the
-   photo plate, the notes band, and the footer. Gaps inside a band stay
-   smaller than the unit so each band still reads as one piece. */
+/* Homepage vertical rhythm: one band unit separates the masthead band, the photo plate, the notes band, and the footer. Gaps inside a band stay smaller than the unit so each band still reads as one piece. */
 main:has(.front-hero) {
   --front-band: clamp(64px, 9vw, 112px);
   padding-top: clamp(40px, 6vw, 88px);
   padding-bottom: 0;
 }
 
-/* One centered column: sentence, then the grid. The sentence left-aligns to
-   the grid's edge the same way the photo caption aligns to its plate. */
+/* One centered column: sentence, then the grid. The sentence left-aligns to the grid's edge the same way the photo caption aligns to its plate. */
 .front-hero {
   width: min(100%, 680px);
   margin: 0 auto;
@@ -170,8 +167,7 @@ main:has(.front-hero) {
   height: 16px;
 }
 
-/* The photo is the page's centerpiece; equal air above and below makes the
-   plate feel placed rather than left over between sections. */
+/* The photo is the page's centerpiece; equal air above and below makes the plate feel placed rather than left over between sections. */
 .front-photo-band {
   padding: var(--front-band) 0;
 }
@@ -223,11 +219,7 @@ main:has(.front-hero) {
   border-top: 1px solid var(--line);
 }
 
-/* Recent notes joins the same centered column as the sentence, grid, and
-   photograph — no rules; whitespace and the mono label do the sectioning.
-   Each note repeats the photo plate's language: a serif artifact with a
-   small mono caption beneath it. The photo band already provides the band
-   unit above, so the section only pads before the footer rule. */
+/* Recent notes joins the same centered column as the sentence, grid, and photograph — no rules; whitespace and the mono label do the sectioning. Each note repeats the photo plate's language: a serif artifact with a small mono caption beneath it. The photo band already provides the band unit above, so the section only pads before the footer rule. */
 .front-notes {
   width: min(100%, 680px);
   margin: 0 auto;
@@ -413,12 +405,7 @@ main:has(.front-hero) {
   letter-spacing: 0;
 }
 
-/* Work ledger: one hairline spine; the years stand beside it as large,
-   light numerals — monuments rather than headings. Each entry hangs from the
-   spine by the primary form of its kind (square = software, circle = game),
-   filled in the accent while the work is still moving, outlined in ink once
-   it rests. A small key above the first year explains the geometry; a short
-   crossbar closes the spine after the last entry. */
+/* Work ledger: one hairline spine; the years stand beside it as large, light numerals — monuments rather than headings. Each entry hangs from the spine by the primary form of its kind (square = software, circle = game), filled in the accent while the work is still moving, outlined in ink once it rests. A small key above the first year explains the geometry; a short crossbar closes the spine after the last entry. */
 .timeline {
   --year-col: clamp(8.5rem, 16vw, 10.5rem);
   --spine-gap: clamp(24px, 3.5vw, 38px);
@@ -547,8 +534,7 @@ main:has(.front-hero) {
   line-height: 1.6;
 }
 
-/* Lineage: what an entry grew out of. A quiet italic aside off a soft rule,
-   so a killed predecessor stays part of the record without its own entry. */
+/* Lineage: what an entry grew out of. A quiet italic aside off a soft rule, so a killed predecessor stays part of the record without its own entry. */
 .timeline-origin {
   margin: 4px 0 0;
   max-width: 50ch;
@@ -867,9 +853,7 @@ main:has(.front-hero) {
 }
 
 .photo-page {
-  /* Viewport height left for the photograph once the site header is on
-     screen. svh (smallest viewport) keeps portrait photos fully visible on
-     mobile even while the browser UI is expanded. */
+  /* Viewport height left for the photograph once the site header is on screen. svh (smallest viewport) keeps portrait photos fully visible on mobile even while the browser UI is expanded. */
   --photo-viewport: calc(100svh - 108px);
   padding: 0 0 clamp(18px, 4vw, 40px);
 }
@@ -877,9 +861,7 @@ main:has(.front-hero) {
 /* The photograph owns the first viewport, so drop the shared top padding. */
 main:has(.photo-page) { padding-top: 0; }
 
-/* Break the frame out of the .container column to near-full viewport width.
-   The clamp() gutter stays wider than a classic scrollbar, so the negative
-   margins never introduce horizontal overflow. */
+/* Break the frame out of the .container column to near-full viewport width. The clamp() gutter stays wider than a classic scrollbar, so the negative margins never introduce horizontal overflow. */
 .photo-frame {
   display: flex;
   align-items: center;
@@ -946,8 +928,7 @@ main:has(.photo-page) { padding-top: 0; }
   .rule-list li { grid-template-columns: 1fr; gap: 8px; }
   .photo-grid { grid-template-columns: 1fr; }
   .photo-tile { grid-column: auto; }
-  /* The stacked header is taller here; let content flow naturally instead of
-     centering the photo in the leftover space. */
+  /* The stacked header is taller here; let content flow naturally instead of centering the photo in the leftover space. */
   .photo-page { --photo-viewport: calc(100svh - 136px); }
   .photo-frame { min-height: 0; margin-top: 14px; }
   .note-row { grid-template-columns: 1fr; gap: 4px; }
