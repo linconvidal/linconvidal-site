@@ -19,6 +19,14 @@ const statusLabels: Record<CollectionEntry<'work'>['data']['status'], string> = 
   archived: 'archived',
 };
 
+const statusOrder: Record<CollectionEntry<'work'>['data']['status'], number> = {
+  active: 0,
+  experiment: 1,
+  paused: 2,
+  unfinished: 3,
+  archived: 4,
+};
+
 // One primary form per kind: the mark each entry hangs from the spine by.
 // Filled while the work is still moving, outlined once it rests.
 const kindShapes: Record<CollectionEntry<'work'>['data']['kind'], string> = {
@@ -29,8 +37,7 @@ const kindShapes: Record<CollectionEntry<'work'>['data']['kind'], string> = {
 const entryUrl = (entry: CollectionEntry<'work'>) =>
   entry.data.kind === 'game' ? `/games/${entry.id}/` : `/software/${entry.id}/`;
 
-// Newest year first. Within a year, entries with an exact start come before
-// "by" entries, whose real start may be older than the year they sit under.
+// Newest year first. Within a year, active work comes before experiments and paused work; entries with an exact start come before "by" entries when status is the same.
 const precisionOrder = { year: 0, by: 1 };
 const years = [...new Set(entries.map((entry) => entry.data.started))]
   .sort((a, b) => b - a)
@@ -40,8 +47,9 @@ const years = [...new Set(entries.map((entry) => entry.data.started))]
       .filter((entry) => entry.data.started === year)
       .sort(
         (a, b) =>
-          precisionOrder[a.data.startedPrecision] -
-          precisionOrder[b.data.startedPrecision],
+          statusOrder[a.data.status] - statusOrder[b.data.status] ||
+          precisionOrder[a.data.startedPrecision] - precisionOrder[b.data.startedPrecision] ||
+          a.data.title.localeCompare(b.data.title),
       ),
   }));
 

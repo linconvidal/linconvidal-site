@@ -6,7 +6,6 @@
     "origin": "SpatialMD was the first step: a way to write diagrams and visual notes in plain text. That version is dead. Cobogó is the idea that survived it.",
     "kind": "software",
     "started": 2026,
-    "startedPrecision": "by",
     "status": "active",
     "statusNote": "not public yet",
     "image": {
@@ -87,7 +86,6 @@
     "summary": "A bike game where the crashes are part of the design process.",
     "kind": "game",
     "started": 2026,
-    "startedPrecision": "by",
     "status": "active",
     "statusNote": "playable prototype",
     "image": {
@@ -120,6 +118,87 @@
       }
     ],
     "links": [{ "label": "cotinga.games", "href": "https://cotinga.games/" }]
+  },
+  {
+    "id": "materia",
+    "title": "Materia",
+    "summary": "A small sandbox for making materials explode, collapse, heat up, or get pulled into a black hole.",
+    "kind": "game",
+    "started": 2026,
+    "status": "experiment",
+    "statusNote": "private sandbox",
+    "lede": "Mostly a place to poke matter and watch it misbehave.",
+    "sections": [
+      {
+        "kicker": "shape",
+        "title": "A small material sandbox.",
+        "body": [
+          "The prototype has wood, glass, rubber, clay, flesh, sand, and water, with tools for explosions, black holes, bonds, velocity, mesh view, heat, pan, and zoom."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "One quick experiment, still useful.",
+        "body": [
+          "It is not a finished product. The interesting part is the simple loop: poke the system and see what kind of mess it makes."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "onze",
+    "title": "Onze",
+    "summary": "A football manager sketch: pick the team, run the match, read what happened.",
+    "kind": "game",
+    "started": 2026,
+    "status": "experiment",
+    "statusNote": "private prototype",
+    "lede": "This started with a small question: how little does a football match need before it still feels like one?",
+    "sections": [
+      {
+        "kicker": "shape",
+        "title": "Team first, match second.",
+        "body": [
+          "The prototype has squads, formations, lineups, player attributes, context effects, and a deterministic match engine.",
+          "Most of the game is still imagined around the manager. The match is the small machine underneath it."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "A sketch, not a league.",
+        "body": [
+          "It is not a playable career mode. It is the first pass at the part I wanted to understand: whether a tiny match model can still produce a result that feels readable."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "evolulab",
+    "title": "Evolulab",
+    "summary": "A small artificial-life world where creatures eat, reproduce, mutate, and become strange in ways I did not plan.",
+    "origin": "First Godot, later Rust and Bevy. Same idea, different engine underneath.",
+    "kind": "game",
+    "started": 2025,
+    "status": "paused",
+    "statusNote": "private prototype",
+    "lede": "Evolulab was me trying to make a world I could stop directing.",
+    "sections": [
+      {
+        "kicker": "shape",
+        "title": "Evolution as the mechanic.",
+        "body": [
+          "The Godot version explored genetics, procedural biomes, creature behavior, chaos events, and a UI for watching populations change over time.",
+          "The Rust and Bevy version moved the same idea into ECS, neural networks, chunked worlds, headless runs, and species persistence."
+        ]
+      },
+      {
+        "kicker": "state",
+        "title": "Paused, but still part of the line.",
+        "body": [
+          "It is not a public game yet. It matters here because it connects the playful side of my work to simulation, emergence, and systems that surprise me."
+        ]
+      }
+    ]
   },
   {
     "id": "linconvidal-site",

@@ -96,6 +96,7 @@ h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); }
   margin: 24px 0 0;
   color: var(--muted);
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  text-wrap: pretty;
 }
 
 /* Homepage vertical rhythm: one band unit separates the masthead band, the photo plate, the notes band, and the footer. Gaps inside a band stay smaller than the unit so each band still reads as one piece. */
@@ -119,6 +120,7 @@ main:has(.front-hero) {
   font-weight: 500;
   letter-spacing: -0.015em;
   line-height: 1.35;
+  text-wrap: pretty;
 }
 
 .front-list {
@@ -532,6 +534,7 @@ main:has(.front-hero) {
   color: var(--muted);
   font-size: clamp(1.02rem, 1.5vw, 1.12rem);
   line-height: 1.6;
+  text-wrap: pretty;
 }
 
 /* Lineage: what an entry grew out of. A quiet italic aside off a soft rule, so a killed predecessor stays part of the record without its own entry. */
@@ -618,6 +621,7 @@ main:has(.front-hero) {
   font-size: clamp(1.35rem, 2.4vw, 2rem);
   letter-spacing: -0.025em;
   line-height: 1.22;
+  text-wrap: pretty;
 }
 
 .work-facts {
@@ -707,6 +711,7 @@ main:has(.front-hero) {
   color: var(--muted);
   font-size: clamp(1.02rem, 1.4vw, 1.15rem);
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .work-section-kicker {
