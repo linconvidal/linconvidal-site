@@ -31,6 +31,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
+    <script>
+      import posthog from 'posthog-js';
+
+      const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? 'phc_p71MtPmJsasEtaEOgnaoyIMq7gzAA4MDDkNKM6aCLAb';
+      const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST ?? 'https://us.i.posthog.com';
+      const isLocalhost = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
+
+      if (posthogKey && !isLocalhost) {
+        posthog.init(posthogKey, {
+          api_host: posthogHost,
+          defaults: '2026-05-30',
+          capture_pageview: true,
+          capture_pageleave: false,
+          autocapture: false,
+          rageclick: false,
+          capture_dead_clicks: false,
+          capture_exceptions: false,
+          capture_heatmaps: false,
+          capture_performance: false,
+          disable_scroll_properties: true,
+          disable_session_recording: true,
+          person_profiles: 'identified_only',
+          respect_dnt: true,
+        });
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">

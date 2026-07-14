@@ -6,16 +6,7 @@ Instructions for AI agents working on `linconvidal-site`.
 
 This is Lincon Vidal's personal static site for photographs, software, games, and notes. It is not a generic portfolio template and should not sound like a pitch deck.
 
-Keep the public information architecture to exactly these top-level sections:
-
-- `/photography`
-- `/software`
-- `/games`
-- `/notes`
-
-There is no public `/projects` section. Do not add one unless Lincon explicitly changes the site IA.
-
-Individual work pages live under their section, such as `/software/<slug>/` or `/games/<slug>/`.
+Preserve the existing public site structure unless Lincon explicitly asks to change it. Do not invent fallback routes, sections, or categories to make data fit.
 
 Do not encode current item classifications as permanent policy in this file. The source of truth for work classification is `src/data/work.json`, plus Lincon's latest explicit instruction. If a classification, lineage relationship, or public page boundary is unclear, inspect the current data and ask before changing it.
 
@@ -87,7 +78,5 @@ Before reporting site work complete, run:
 npm run check
 npm run build
 ```
-
-Also check that no `/projects` route or stale `/projects` references were introduced.
 
 Do not commit, push, or deploy unless Lincon explicitly asks.
